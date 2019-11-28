@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="">
+   <title>Secret Pokemon App</title>
+</head>
+<body>
+   <nav class="navigation">
+      <div class="menu">
+         <ol>
+            <li>About</li>
+            <li>Use</li>
+            <li>Start the game</li>
+            <li>GitHub</li>
+         </ol>
+      </div>
+      <figure class="logo">
+         <img src="" alt="Secret Pokemon">
+      </figure>
+   </nav>
+   <section class="input-card">
+      <h2>Enter your info</h2>
+      <fieldset>
+         <label for="fist-name">First name</label>
+         <input type="text" name="first-name" id="first-name">
+         <label for="last-name">Last name</label>
+         <input type="text" name="last-name" id="last-name">
+         <label for=""></label>
+         <select name="month" id="month">
+            <option value="">January</option>
+            <option value="">February</option>
+            <option value="">March</option>
+            <option value="">April</option>
+            <option value="">May</option>
+            <option value="">June</option>
+            <option value="">July</option>
+            <option value="">August</option>
+            <option value="">September</option>
+            <option value="">October</option>
+            <option value="">November</option>
+            <option value="">December</option>
+         </select>
+         <label for="day"></label>
+         <select name="day" id="day"></select>
+         <label for="year"></label>
+         <select name="year" id="year"></select>
+         <button class="submit-button" id="submit-button">GO</button>
+      </fieldset>
+   </section>
+
+   <section class="header">
+      <p class="start">You got <span class="pokemon-id"></span></p>
+
+      <h1 class="pokemon-name"></h1>
+      <figure class="pokemon-sprite-container">
+         <img src="" alt="" class="pokemon-sprite">
+      </figure>
+   </section>
+
+   <section class="pokemon-info">
+      <div class="type-container"></div>
+      <div class="buttons-container"></div>
+   </section>
+
+   <footer class="footer">
+      <p class="credits">Hecho con 💚</p>
+   </footer>
+   <!-- JS -->
+   <script src="secret.js"></script>
+</body>
+</html>
