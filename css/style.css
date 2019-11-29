@@ -1,0 +1,13 @@
+*{
+   margin: 0;
+   padding: 0;
+   /* box-sizing: border-box; */
+}
+/* Orion icons */
+.theme-line-0 {
+   --layer2: #202020;
+   --layer1: #202020;}
+
+.theme-line-1 {
+--layer1: #202020;}
+
