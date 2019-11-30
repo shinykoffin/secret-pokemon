@@ -1,13 +1,60 @@
 *{
    margin: 0;
    padding: 0;
-   /* box-sizing: border-box; */
+   box-sizing: border-box;
+   font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3{
+   font-family: 'Palanquin', sans-serif;
 }
 /* Orion icons */
 .theme-line-0 {
-   --layer2: #202020;
-   --layer1: #202020;}
+   --layer2: #fcfcfc;
+   --layer1: #fcfcfc;}
 
 .theme-line-1 {
 --layer1: #202020;}
 
+.burger-icon{
+   height: 28px;
+   width: 28px;
+   position: inherit;
+   z-index: 2;
+   margin: 5px;
+}
+.navigation{
+   background: #1b98e0;
+   width: 100vw;
+   height: 3rem;
+   position: sticky;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.menu{
+   background-color: rgba(27, 152, 224, 0.95);
+   position: fixed;
+   width: 85vw;
+   height: 100vh;
+   top: 0;
+   left: -100vw;
+}
+.menu ol{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin: 65px 0 0;
+}
+.menu li{
+   width: 100%;
+}
+.menu a{
+   height: 2.5rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   color: white;
+   font-size: 1.2em;
+}
