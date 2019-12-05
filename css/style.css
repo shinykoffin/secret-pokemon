@@ -13,7 +13,8 @@ h1, h2, h3{
    --layer1: #fcfcfc;}
 
 .theme-line-1 {
---layer1: #202020;}
+   --layer1: #202020;
+}
 
 .burger-icon{
    height: 28px;
@@ -101,7 +102,7 @@ h1, h2, h3{
    font-size: 1.1rem;
    border: none;
    border-radius: 30px;
-   background: #38a431;
+   background: #a1cf31;
 }
 .social-links{
    margin: 60px 0;
@@ -111,19 +112,27 @@ h1, h2, h3{
 .github, .twitter{
    width: 58px;
    height: 58px;
-   background: #f06543;
+   background: #e0f2b6;
    padding: 0.5rem;
    border-radius: 50%;
    margin: 0 10px;
 }
 /*APP*/
+.input-card-container{
+   width: 100vw;
+   height: 100vh;
+   background: rgba(0, 0, 0, .5);
+   position: fixed;
+   z-index: 1;
+   display: none;
+}
 .input-card{
    background: #1b98ff;
    position: fixed;
    width: 90vw;
    height: 90vh;
    margin: 5vh 5vw;
-   /* display: none; */
+   z-index: 2;
 }
 .input-card h2{
    text-align: center;
@@ -162,7 +171,83 @@ h1, h2, h3{
    background-size: 3%, 100%;
    background-repeat: no-repeat;
 }
-
+.pokemon-result{
+   display: flex;
+   height: 100vh;
+   flex-direction: column;
+}
+.pokemon{
+   padding-top: 3rem;
+}
+.pokemon-id-container{
+   margin: 0.55rem 0;
+   padding: 0 0.6rem;
+}
+.pokemon-id-container p{
+   display: flex;
+   justify-content: space-between;
+}
+.pokemon-id{
+   font-weight: 700;
+}
+.pokemon-name{
+   font-size: 2.4rem;
+   text-align: center;
+}
+.pokemon-sprite-container{
+   height: 9rem;
+   text-align: center;
+}
+.pokemon-sprite{
+   width: 196px;
+   height: 196px;
+   border: 6px solid black;
+   border-radius: 50%;
+   position: relative;
+   bottom: -1rem;
+   background: #fcfcfc;
+}
+.pokemon-info{
+   background: red;
+   flex-grow: 1;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+.type-container{
+   padding-top: calc(196px - 6rem);
+   display: flex;
+   justify-content: space-around;
+}
+.type{
+   background: navy;
+   text-align: center;
+   color: ivory;
+   width: 8.3rem;
+   height: 2rem;
+   border: 1px solid #202020;
+   border-radius: 0.3rem;
+   margin: 5px;
+   line-height: 2rem;
+}
+.buttons-container{
+   display: flex;
+   justify-content: space-around;
+}
+.button-second{
+   display: block;
+   padding: 5px;
+   margin-bottom: 10px;
+   background: ivory;
+   width: 35vw;
+   height: 3rem;
+   border-radius: 10px;
+   text-decoration: none;
+   text-align: center;
+   line-height: 2.5rem;
+   color: black;
+}
+.poison{background: #a040a0; border: 2px solid #682a68}
 .footer{
    background: #001242;
    color: #fcfcfc;
