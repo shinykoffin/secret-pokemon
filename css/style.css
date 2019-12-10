@@ -124,7 +124,7 @@ h1, h2, h3{
    background: rgba(0, 0, 0, .5);
    position: fixed;
    z-index: 1;
-   display: none;
+   /* display: none; */
 }
 .input-card{
    background: #1b98ff;
@@ -193,6 +193,7 @@ h1, h2, h3{
 .pokemon-name{
    font-size: 2.4rem;
    text-align: center;
+   text-transform: capitalize;
 }
 .pokemon-sprite-container{
    height: 9rem;
@@ -248,9 +249,13 @@ h1, h2, h3{
    color: black;
 }
 .poison{background: #a040a0; border: 2px solid #682a68}
+
 .footer{
    background: #001242;
    color: #fcfcfc;
    font-size: .8rem;
    text-align: center;
+}
+.invisible{
+   display: none;
 }
