@@ -221,15 +221,14 @@ h1, h2, h3{
    justify-content: space-around;
 }
 .type{
-   background: navy;
    text-align: center;
+   text-transform: capitalize;
    color: ivory;
    width: 8.3rem;
    height: 2rem;
-   border: 1px solid #202020;
    border-radius: 0.3rem;
    margin: 5px;
-   line-height: 2rem;
+   line-height: 1.5rem;
 }
 .buttons-container{
    display: flex;
@@ -248,7 +247,26 @@ h1, h2, h3{
    line-height: 2.5rem;
    color: black;
 }
+
+.normal{background: #a8a878; border: 2px solid #6d6d4e}
+.fire{background: #f08030; border: 2px solid #9c531f}
+.fighting{background: #c03028; border: 2px solid #7d1f1a}
+.water{background: #6890f0; border: 2px solid #445e9c}
+.flying{background: #a890f0; border: 2px solid #6d5e9c}
+.grass{background: #78c850; border: 2px solid #4e8234}
 .poison{background: #a040a0; border: 2px solid #682a68}
+.electric{background: #f8d030; border: 2px solid #a1871f}
+.ground{background: #e0c068; border: 2px solid #927d44}
+.psychic{background: #f85888; border: 2px solid #a13959}
+.rock{background: #b8a038; border: 2px solid #786824}
+.ice{background: #98d8d8; border: 2px solid #638d8d}
+.bug{background: #a8b820; border: 2px solid #6d7815}
+.dragon{background: #7038f8; border: 2px solid #4924a1}
+.ghost{background: #705898; border: 2px solid #493963}
+.dark{background: #474747; border: 2px solid #242424}
+.steel{background: #b8b8d0; border: 2px solid #787887}
+.fairy{background: #ee99ac; border: 2px solid #9b6470}
+
 
 .footer{
    background: #001242;

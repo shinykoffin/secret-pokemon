@@ -13,6 +13,7 @@ const inputCard = document.querySelector('.input-card-container')
 const pokemonIdSpan = document.querySelector('.pokemon-id')
 const pokemonNameTitle = document.querySelector('.pokemon-name')
 const pokemonImageContainer = document.querySelector('.pokemon-sprite-container')
+const typeContainer = document.querySelector('.type-container')
 
 initializeSelectElements()
 
@@ -69,6 +70,14 @@ async function getPokemon(){
    pokemonImage.src = json.sprites.front_default
    pokemonImage.classList.add('pokemon-sprite')
    pokemonImageContainer.appendChild(pokemonImage)
+
+   json.types.forEach(t => {
+      const typeDiv = document.createElement('div')
+      typeDiv.classList.add('type')
+      typeDiv.classList.add(t.type.name)
+      typeDiv.innerHTML = t.type.name
+      typeContainer.appendChild(typeDiv)
+   });
    console.log(json)
 }
 
