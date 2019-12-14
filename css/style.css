@@ -133,6 +133,10 @@ h1, h2, h3{
    height: 90vh;
    margin: 5vh 5vw;
    z-index: 2;
+   transition: 0.25s;
+   transition-timing-function: ease-out;
+   transform: translateY(0);
+   opacity: 1;
 }
 .input-card h2{
    text-align: center;
@@ -276,4 +280,7 @@ h1, h2, h3{
 }
 .invisible{
    display: none;
+}
+.show{
+   
 }

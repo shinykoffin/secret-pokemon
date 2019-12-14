@@ -14,6 +14,8 @@ const pokemonIdSpan = document.querySelector('.pokemon-id')
 const pokemonNameTitle = document.querySelector('.pokemon-name')
 const pokemonImageContainer = document.querySelector('.pokemon-sprite-container')
 const typeContainer = document.querySelector('.type-container')
+const resetButton = document.querySelector('.button-reset')
+const moreInfoButton = document.querySelector('.button-more-info')
 
 initializeSelectElements()
 
@@ -44,10 +46,9 @@ function initializeSelectElements(){
 
    yearSelector.selectedIndex = yearSelector.options.length-1
 }
+
 async function getPokemon(){
    flagStart = true
-
-
 
    const firstLetter = getLetterValue(firstNameInput.value)
    const secondLetter = getLetterValue(lastNameInput.value)
@@ -81,7 +82,20 @@ async function getPokemon(){
    console.log(json)
 }
 
-
+function resetApp(){
+   if(flagStart){
+      pokemonIdSpan.innerHTML = '#'
+      pokemonNameTitle.innerHTML = ''
+      
+      pokemonImageContainer.removeChild(pokemonImageContainer.firstChild)
+      
+      while(typeContainer.firstChild){
+         typeContainer.removeChild(typeContainer.firstChild)
+      }
+      inputCard.classList.remove('invisible')
+      flagStart = false
+   }
+}
 
 function getLetterValue(string){
    const letter = string.slice(0,1).toUpperCase()
@@ -96,4 +110,16 @@ function calcSecretPokemon(day, month, year, firstLetterValue, secondLetterValue
    return Math.round(firstNumber * secondNumber)
 }
 
-goButton.addEventListener('click', getPokemon)
+goButton.addEventListener('click', () => {
+   const letters = /^[A-Za-z\s]+$/
+   if(firstNameInput.value && lastNameInput.value != ''){
+      if(firstNameInput.value.match(letters) && lastNameInput.value.match(letters)){
+         getPokemon()
+      }else{
+         alert('Enter only letters')
+      }
+   }else{
+      alert('Please enter your name')
+   }
+})
+resetButton.addEventListener('click', resetApp)
