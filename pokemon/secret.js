@@ -15,7 +15,7 @@ const pokemonNameTitle = document.querySelector('.pokemon-name')
 const pokemonImageContainer = document.querySelector('.pokemon-sprite-container')
 const typeContainer = document.querySelector('.type-container')
 const resetButton = document.querySelector('.button-reset')
-const moreInfoButton = document.querySelector('.button-more-info')
+const buttonsContainer = document.querySelector('.buttons-container')
 
 initializeSelectElements()
 
@@ -50,6 +50,8 @@ function initializeSelectElements(){
 async function getPokemon(){
    flagStart = true
 
+   const OFFICIAL_POKEDEX = 'https://api.pokemon.com/us/pokedex/'
+
    const firstLetter = getLetterValue(firstNameInput.value)
    const secondLetter = getLetterValue(lastNameInput.value)
 
@@ -79,7 +81,51 @@ async function getPokemon(){
       typeDiv.innerHTML = t.type.name
       typeContainer.appendChild(typeDiv)
    });
-   console.log(json)
+
+   const moreInfoButton = document.createElement('a')
+   moreInfoButton.classList.add('button-second')
+   moreInfoButton.href = OFFICIAL_POKEDEX +json.name
+   moreInfoButton.target = '_blank'
+   moreInfoButton.innerHTML = 'More info...'
+   buttonsContainer.appendChild(moreInfoButton)
+}
+
+function checkInput(input){
+   const letters = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/
+   const errorMessage = document.createElement('span')
+   errorMessage.classList.add('error-text')
+   if(input.value == ''){
+      input.classList.add('error-red')
+      errorMessage.innerHTML = 'Please fill this'
+      input.parentNode.insertBefore(errorMessage, input.nextSibling)
+      return false
+   }else if(!input.value.match(letters)){
+      input.classList.add('error-red')
+      errorMessage.innerHTML = 'Characters not allowed'
+      input.parentNode.insertBefore(errorMessage, input.nextSibling)
+      return false
+   }
+   return true
+}
+
+function getLetterValue(string){
+   const letter = string.slice(0,1).toUpperCase()
+   const letterValue = (letter.charCodeAt(0)-64)* 0.1
+   return parseFloat(letterValue.toFixed(1))
+}
+
+function calcSecretPokemon(day, month, year, firstLetterValue, secondLetterValue){
+   const POKEMON_LIMIT = 807
+   const firstNumber = day + month + year
+   const secondNumber = firstLetterValue + secondLetterValue
+   
+   let pokemonId = Math.round(firstNumber * secondNumber)
+   console.log(pokemonId)
+   while(pokemonId > POKEMON_LIMIT){
+      pokemonId -= POKEMON_LIMIT
+      console.log(pokemonId)
+   }
+   return pokemonId
 }
 
 function resetApp(){
@@ -93,33 +139,20 @@ function resetApp(){
          typeContainer.removeChild(typeContainer.firstChild)
       }
       inputCard.classList.remove('invisible')
+      buttonsContainer.removeChild(buttonsContainer.childNodes[3])
+
       flagStart = false
    }
 }
 
-function getLetterValue(string){
-   const letter = string.slice(0,1).toUpperCase()
-   const letterValue = (letter.charCodeAt(0)-64)* 0.1
-   return parseFloat(letterValue.toFixed(1))
-}
+// function correctingInput(){
 
-function calcSecretPokemon(day, month, year, firstLetterValue, secondLetterValue){
-   const firstNumber = day + month + year
-   const secondNumber = firstLetterValue + secondLetterValue
-
-   return Math.round(firstNumber * secondNumber)
-}
-
+// }
 goButton.addEventListener('click', () => {
-   const letters = /^[A-Za-z\s]+$/
-   if(firstNameInput.value && lastNameInput.value != ''){
-      if(firstNameInput.value.match(letters) && lastNameInput.value.match(letters)){
-         getPokemon()
-      }else{
-         alert('Enter only letters')
-      }
-   }else{
-      alert('Please enter your name')
+   const firstChek = checkInput(firstNameInput)
+   const secondCheck = checkInput(lastNameInput)
+   if(firstChek && secondCheck){
+      getPokemon()
    }
 })
 resetButton.addEventListener('click', resetApp)
