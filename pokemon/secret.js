@@ -16,19 +16,21 @@ const pokemonImageContainer = document.querySelector('.pokemon-sprite-container'
 const typeContainer = document.querySelector('.type-container')
 const resetButton = document.querySelector('.button-reset')
 const buttonsContainer = document.querySelector('.buttons-container')
+const firsrtNameError = document.querySelector('#first-name-error')
+const lastNameError = document.querySelector('#last-name-error')
 
 initializeSelectElements()
 
 function initializeSelectElements(){
    const currentYear = new Date().getFullYear()
-
+   //Fill day dropdown selector
    for(let i = 1; i <= 31; i++){
       const dayOpt = document.createElement('option')
       dayOpt.value = i
       dayOpt.innerHTML = i
       daySelector.appendChild(dayOpt)
    }
-
+   //Fill month selector
    for (let i = 1; i <=12 ; i++) {
       const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
       const monthOpt = document.createElement('option')
@@ -36,14 +38,14 @@ function initializeSelectElements(){
       monthOpt.innerHTML = months[i-1]
       monthSelector.appendChild(monthOpt)
    }
-
+   //Fill year selector
    for (let i = 1950; i <= currentYear; i++) {
       const yearOpt = document.createElement('option')
       yearOpt.value = i
       yearOpt.innerHTML = i
       yearSelector.appendChild(yearOpt)
    }
-
+   //Current year as default option
    yearSelector.selectedIndex = yearSelector.options.length-1
 }
 
@@ -90,22 +92,31 @@ async function getPokemon(){
    buttonsContainer.appendChild(moreInfoButton)
 }
 
-function checkInput(input){
+function checkInput(){
    const letters = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/
-   const errorMessage = document.createElement('span')
-   errorMessage.classList.add('error-text')
-   if(input.value == ''){
-      input.classList.add('error-red')
-      errorMessage.innerHTML = 'Please fill this'
-      input.parentNode.insertBefore(errorMessage, input.nextSibling)
-      return false
-   }else if(!input.value.match(letters)){
-      input.classList.add('error-red')
-      errorMessage.innerHTML = 'Characters not allowed'
-      input.parentNode.insertBefore(errorMessage, input.nextSibling)
-      return false
+   let flag = true
+
+   //First input
+   if(firstNameInput.value == ''){
+      firstNameInput.classList.add('error-border')
+      firsrtNameError.innerHTML = 'Please enter your first name'
+      flag = false
+   }else if(!firstNameInput.value.match(letters)){
+      firstNameInput.classList.add('error-border')
+      firsrtNameError.innerHTML = 'Characters not allowed'
+      flag = false
    }
-   return true
+   //Second Input
+   if(lastNameInput.value == ''){
+      lastNameInput.classList.add('error-border')
+      lastNameError.innerHTML = 'Please enter your last name'
+      flag = false
+   }else if(!lastNameInput.value.match(letters)){
+      lastNameInput.classList.add('error-border')
+      lastNameError.innerHTML = 'Characters not allowed'
+      flag = false
+   }
+   return flag
 }
 
 function getLetterValue(string){
@@ -120,10 +131,8 @@ function calcSecretPokemon(day, month, year, firstLetterValue, secondLetterValue
    const secondNumber = firstLetterValue + secondLetterValue
    
    let pokemonId = Math.round(firstNumber * secondNumber)
-   console.log(pokemonId)
    while(pokemonId > POKEMON_LIMIT){
       pokemonId -= POKEMON_LIMIT
-      console.log(pokemonId)
    }
    return pokemonId
 }
@@ -145,14 +154,29 @@ function resetApp(){
    }
 }
 
-// function correctingInput(){
+function correctingInput(input, errorSpan){
+   console.log(input.value)
+   if(input.classList.contains('error-border')){
+      input.classList.remove('error-border')
+   }
+   if(errorSpan.innerHTML){
+      errorSpan.innerHTML = ''
+   }
+}
 
-// }
 goButton.addEventListener('click', () => {
-   const firstChek = checkInput(firstNameInput)
-   const secondCheck = checkInput(lastNameInput)
-   if(firstChek && secondCheck){
+   if(checkInput()){
       getPokemon()
+   }else{
+      firstNameInput.addEventListener('focus', function correct(){
+         correctingInput(firstNameInput, firsrtNameError)
+         firstNameInput.removeEventListener('focus', correct)
+      })
+      lastNameInput.addEventListener('focus', function correct (){
+         correctingInput(lastNameInput, lastNameError)
+         lastNameInput.removeEventListener('focus', correct)
+      })
    }
 })
+
 resetButton.addEventListener('click', resetApp)

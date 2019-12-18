@@ -282,12 +282,13 @@ h1, h2, h3{
    display: none;
 }
 .error-text{
-   font-size: 0.6rem;
+   width: 100%;
+   font-size: 0.8rem;
    text-align: left;
    color: red;
-   text-shadow: 1px 1px navy;
+   text-shadow: 1px 1px rgb(4, 46, 163);
 }
-.error-red{
+.error-border{
    box-shadow: 0px 1px 3px 1px red;
 }
 @keyframes fade{
