@@ -49,34 +49,62 @@ function initializeSelectElements(){
    yearSelector.selectedIndex = yearSelector.options.length-1
 }
 
-async function getPokemon(){
+function pokemonSetup(){
    flagStart = true
-
-   const OFFICIAL_POKEDEX = 'https://api.pokemon.com/us/pokedex/'
-
+   inputCard.classList.add('invisible')
+   
    const firstLetter = getLetterValue(firstNameInput.value)
    const secondLetter = getLetterValue(lastNameInput.value)
-
+   
    const day = parseInt(daySelector.value)
    const month = parseInt(monthSelector.value)
    const year = parseInt(yearSelector.value.slice(-2))
-
-   inputCard.classList.add('invisible')
-
-   const pokemonId = calcSecretPokemon(day, month, year, firstLetter, secondLetter)
-
-   const response = await fetch(API_URL.replace(':x:',pokemonId))
-   const json = await response.json()
    
+   const pokemonId = calcSecretPokemon(day, month, year, firstLetter, secondLetter)
+   
+   getPokemon(pokemonId)
+   .then(pokemon =>{
+      createPokemon(pokemon, pokemonId)
+   })
+   .catch(err => {console.log(err)})
+}
+
+function getLetterValue(string){
+   const letter = string.slice(0,1).toUpperCase()
+   const letterValue = (letter.charCodeAt(0)-64)* 0.1
+   return parseFloat(letterValue.toFixed(1))
+}
+
+function calcSecretPokemon(day, month, year, firstLetterValue, secondLetterValue){
+   const POKEMON_LIMIT = 807
+   const firstNumber = day + month + year
+   const secondNumber = firstLetterValue + secondLetterValue
+   
+   let pokemonId = Math.round(firstNumber * secondNumber)
+   while(pokemonId > POKEMON_LIMIT){
+      pokemonId -= POKEMON_LIMIT
+   }
+   return pokemonId
+}
+
+async function getPokemon(pokemonId){
+   const response = await fetch(API_URL.replace(':x:', pokemonId))
+   const json = await response.json()
+   return json
+}
+
+function createPokemon(pokemon, pokemonId){
+   const OFFICIAL_POKEDEX = 'https://api.pokemon.com/us/pokedex/'
+
    pokemonIdSpan.innerHTML += pokemonId
-   pokemonNameTitle.innerHTML = json.name
+   pokemonNameTitle.innerHTML = pokemon.name
 
    const pokemonImage = document.createElement('img')
-   pokemonImage.src = json.sprites.front_default
+   pokemonImage.src = pokemon.sprites.front_default
    pokemonImage.classList.add('pokemon-sprite')
    pokemonImageContainer.appendChild(pokemonImage)
 
-   json.types.forEach(t => {
+   pokemon.types.forEach(t => {
       const typeDiv = document.createElement('div')
       typeDiv.classList.add('type')
       typeDiv.classList.add(t.type.name)
@@ -86,7 +114,7 @@ async function getPokemon(){
 
    const moreInfoButton = document.createElement('a')
    moreInfoButton.classList.add('button-second')
-   moreInfoButton.href = OFFICIAL_POKEDEX +json.name
+   moreInfoButton.href = OFFICIAL_POKEDEX +pokemon.name
    moreInfoButton.target = '_blank'
    moreInfoButton.innerHTML = 'More info...'
    buttonsContainer.appendChild(moreInfoButton)
@@ -95,7 +123,6 @@ async function getPokemon(){
 function checkInput(){
    const letters = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/
    let flag = true
-
    //First input
    if(firstNameInput.value == ''){
       firstNameInput.classList.add('error-border')
@@ -117,24 +144,6 @@ function checkInput(){
       flag = false
    }
    return flag
-}
-
-function getLetterValue(string){
-   const letter = string.slice(0,1).toUpperCase()
-   const letterValue = (letter.charCodeAt(0)-64)* 0.1
-   return parseFloat(letterValue.toFixed(1))
-}
-
-function calcSecretPokemon(day, month, year, firstLetterValue, secondLetterValue){
-   const POKEMON_LIMIT = 807
-   const firstNumber = day + month + year
-   const secondNumber = firstLetterValue + secondLetterValue
-   
-   let pokemonId = Math.round(firstNumber * secondNumber)
-   while(pokemonId > POKEMON_LIMIT){
-      pokemonId -= POKEMON_LIMIT
-   }
-   return pokemonId
 }
 
 function resetApp(){
@@ -166,15 +175,15 @@ function correctingInput(input, errorSpan){
 
 goButton.addEventListener('click', () => {
    if(checkInput()){
-      getPokemon()
+      pokemonSetup()
    }else{
-      firstNameInput.addEventListener('focus', function correct(){
+      firstNameInput.addEventListener('focus', function callCorrect(){
          correctingInput(firstNameInput, firsrtNameError)
-         firstNameInput.removeEventListener('focus', correct)
+         firstNameInput.removeEventListener('focus', callCorrect)
       })
-      lastNameInput.addEventListener('focus', function correct (){
+      lastNameInput.addEventListener('focus', function callCorrect (){
          correctingInput(lastNameInput, lastNameError)
-         lastNameInput.removeEventListener('focus', correct)
+         lastNameInput.removeEventListener('focus', callCorrect)
       })
    }
 })
