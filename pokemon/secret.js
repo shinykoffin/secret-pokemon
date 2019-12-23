@@ -50,6 +50,9 @@ function initializeSelectElements(){
 }
 
 function pokemonSetup(){
+   if(flagStart == false){
+      inputCard.classList.remove()
+   }
    flagStart = true
    inputCard.classList.add('invisible')
    
@@ -157,6 +160,7 @@ function resetApp(){
          typeContainer.removeChild(typeContainer.firstChild)
       }
       inputCard.classList.remove('invisible')
+      inputCard.classList.add('visible')
       buttonsContainer.removeChild(buttonsContainer.childNodes[3])
 
       flagStart = false
@@ -181,7 +185,7 @@ goButton.addEventListener('click', () => {
          correctingInput(firstNameInput, firsrtNameError)
          firstNameInput.removeEventListener('focus', callCorrect)
       })
-      lastNameInput.addEventListener('focus', function callCorrect (){
+      lastNameInput.addEventListener('focus', function callCorrect(){
          correctingInput(lastNameInput, lastNameError)
          lastNameInput.removeEventListener('focus', callCorrect)
       })
