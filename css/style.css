@@ -279,10 +279,10 @@ h1, h2, h3{
    text-align: center;
 }
 .invisible{
-   animation: fadeAway 1s forwards;
+   animation: fadeAway 0.5s forwards;
 }
 .visible{
-   animation: fadeIn 1s forwards;
+   animation: fadeIn 0.5s forwards;
 }
 .error-text{
    width: 100%;
@@ -318,3 +318,4 @@ h1, h2, h3{
       opacity: 1;
     }
 }
+

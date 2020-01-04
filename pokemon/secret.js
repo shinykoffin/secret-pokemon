@@ -51,7 +51,7 @@ function initializeSelectElements(){
 
 function pokemonSetup(){
    if(flagStart == false){
-      inputCard.classList.remove()
+      inputCard.classList.remove('visible')
    }
    flagStart = true
    inputCard.classList.add('invisible')
