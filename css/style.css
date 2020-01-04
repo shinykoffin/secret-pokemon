@@ -279,13 +279,13 @@ h1, h2, h3{
    text-align: center;
 }
 .invisibleCard{
-   animation: fadeAwayPosition 0.5s forwards;
+   animation: fadeAwayPosition 0.4s forwards;
 }
 .visibleCard{
-   animation: fadeInPosition 0.5s forwards;
+   animation: fadeInPosition 0.4s forwards;
 }
 .fadeIn{
-   animation: fadeIn 0.5s forwards;
+   animation: fadeIn 0.7s forwards;
 }
 .error-text{
    width: 100%;

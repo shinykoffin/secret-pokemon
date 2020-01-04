@@ -115,7 +115,7 @@ function createPokemon(pokemon, pokemonId){
       const typeDiv = document.createElement('div')
       typeDiv.classList.add('type')
       typeDiv.classList.add(t.type.name)
-      pokemonImage.classList.add('fadeIn')
+      typeDiv.classList.add('fadeIn')
       typeDiv.innerHTML = t.type.name
       typeContainer.appendChild(typeDiv)
    });
@@ -159,7 +159,6 @@ function resetApp(){
       pokemonIdSpan.innerHTML = '#'
       pokemonNameTitle.innerHTML = ''
       
-      // pokemonImageContainer.removeChild(pokemonImageContainer.firstChild)
       pokemonImageContainer.removeChild(document.querySelector('.pokemon-sprite'))
       
       while(typeContainer.firstChild){
