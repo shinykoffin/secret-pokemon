@@ -18,6 +18,7 @@ const resetButton = document.querySelector('.button-reset')
 const buttonsContainer = document.querySelector('.buttons-container')
 const firsrtNameError = document.querySelector('#first-name-error')
 const lastNameError = document.querySelector('#last-name-error')
+const loadingAnimation = document.querySelector('.lds-spinner')
 
 initializeSelectElements()
 
@@ -51,10 +52,10 @@ function initializeSelectElements(){
 
 function pokemonSetup(){
    if(flagStart == false){
-      inputCard.classList.remove('visible')
+      inputCard.classList.remove('visibleCard')
    }
    flagStart = true
-   inputCard.classList.add('invisible')
+   inputCard.classList.add('invisibleCard')
    
    const firstLetter = getLetterValue(firstNameInput.value)
    const secondLetter = getLetterValue(lastNameInput.value)
@@ -65,9 +66,11 @@ function pokemonSetup(){
    
    const pokemonId = calcSecretPokemon(day, month, year, firstLetter, secondLetter)
    
+   loadingAnimation.style.display = 'inline-block'
    getPokemon(pokemonId)
    .then(pokemon =>{
       createPokemon(pokemon, pokemonId)
+      loadingAnimation.style.display = 'none'
    })
    .catch(err => {console.log(err)})
 }
@@ -105,12 +108,14 @@ function createPokemon(pokemon, pokemonId){
    const pokemonImage = document.createElement('img')
    pokemonImage.src = pokemon.sprites.front_default
    pokemonImage.classList.add('pokemon-sprite')
+   pokemonImage.classList.add('fadeIn')
    pokemonImageContainer.appendChild(pokemonImage)
 
    pokemon.types.forEach(t => {
       const typeDiv = document.createElement('div')
       typeDiv.classList.add('type')
       typeDiv.classList.add(t.type.name)
+      pokemonImage.classList.add('fadeIn')
       typeDiv.innerHTML = t.type.name
       typeContainer.appendChild(typeDiv)
    });
@@ -154,13 +159,14 @@ function resetApp(){
       pokemonIdSpan.innerHTML = '#'
       pokemonNameTitle.innerHTML = ''
       
-      pokemonImageContainer.removeChild(pokemonImageContainer.firstChild)
+      // pokemonImageContainer.removeChild(pokemonImageContainer.firstChild)
+      pokemonImageContainer.removeChild(document.querySelector('.pokemon-sprite'))
       
       while(typeContainer.firstChild){
          typeContainer.removeChild(typeContainer.firstChild)
       }
-      inputCard.classList.remove('invisible')
-      inputCard.classList.add('visible')
+      inputCard.classList.remove('invisibleCard')
+      inputCard.classList.add('visibleCard')
       buttonsContainer.removeChild(buttonsContainer.childNodes[3])
 
       flagStart = false
