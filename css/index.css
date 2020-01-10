@@ -1,0 +1,42 @@
+.modal{
+   position: fixed;
+   width: 100vw;
+   height: 100vh;
+   background: rgba(0, 0, 0, .5);
+   display: flex;
+   justify-content: center;
+   /* opacity: 0; */
+   /* visibility: hidden; */
+}
+.modal-content{
+   position: fixed;
+   background-color: white;
+   top: 30vh;
+   padding: 1rem 1.5rem;
+   width: 20rem;
+   border-radius: 1.5rem;
+   box-shadow: 5px 10px 30px #090909;
+   animation-name: slideIn;
+   animation-duration: 0.4s;
+}
+.modal-close{
+   cursor: pointer;
+   float: right;
+   width: 1.5rem;
+   height: 1.5rem;
+   line-height: 1.5rem;
+   text-align: center;
+   border-radius: 50%;
+   background-color: grey;
+}
+.modal-close:hover{
+   background-color: #cdcdcd;
+}
+.modal-show{
+   opacity: 1;
+   visibility: visible;
+}
+@keyframes slideIn{
+   from{top: -100vh; opacity: 0;}
+   to{top: 30vh; opacity: 1;}
+}

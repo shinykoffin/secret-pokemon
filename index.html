@@ -4,12 +4,14 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Palanquin+Dark:600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="css/index.css">
    <link rel="stylesheet" href="css/style.css">
    <title>Secret Pokemon</title>
 </head>
+
 <body>
    <nav class="navigation">
-      <svg class="theme-line-0 burger-icon" id="buguer"><use xlink:href="icons/orion-svg-sprite.svg#menu-1"></use></svg>
+      <svg class="theme-line-0 burger-icon" id="burger"><use xlink:href="icons/orion-svg-sprite.svg#menu-1"></use></svg>
       <figure class="logo-container">
          <img src="“#" alt="Secret Pokemon" class="logo">
       </figure>
@@ -17,11 +19,23 @@
          <ol>
             <li><a href="#">About</a></li>
             <li><a href="#">Use</a></li>
-            <li><a href="#">Start the game</a></li>
-            <li><a href="#">GitHub</a></li>
+            <li><a href="/pokemon/index.html">Start the game</a></li>
+            <li><a href="https://github.com/shinykoffin" target="_blank">GitHub</a></li>
          </ol>
       </div>
    </nav>
+
+   <div class="modal">
+      <div class="modal-content">
+         <span class="modal-close">&times;</span>
+         <h1>About</h1>
+         <p>This is a project for the Seedling School Frontend Project by Coding Garden YouTube/Twitch channel. <br>
+            A simple app that integrates with a 3rd party web API. 
+            You can read more about this here. <br>
+            The app will calculate a Pokemon for you using an algorithm based on this image. </p>
+      </div>
+   </div>
+
    <div class="main-container">
       <header class="header">
          <div class="title-container">

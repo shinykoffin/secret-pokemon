@@ -57,14 +57,13 @@ function pokemonSetup(){
    flagStart = true
    inputCard.classList.add('invisibleCard')
    
-   const firstLetter = getLetterValue(firstNameInput.value)
-   const secondLetter = getLetterValue(lastNameInput.value)
-   
+   const firstLetterValue = getLetterValue(firstNameInput.value)
+   const secondLetterValue = getLetterValue(lastNameInput.value)
    const day = parseInt(daySelector.value)
    const month = parseInt(monthSelector.value)
    const year = parseInt(yearSelector.value.slice(-2))
    
-   const pokemonId = calcSecretPokemon(day, month, year, firstLetter, secondLetter)
+   const pokemonId = calcSecretPokemon(day, month, year, firstLetterValue, secondLetterValue)
    
    loadingAnimation.style.display = 'inline-block'
    getPokemon(pokemonId)
@@ -85,8 +84,8 @@ function calcSecretPokemon(day, month, year, firstLetterValue, secondLetterValue
    const POKEMON_LIMIT = 807
    const firstNumber = day + month + year
    const secondNumber = firstLetterValue + secondLetterValue
-   
    let pokemonId = Math.round(firstNumber * secondNumber)
+
    while(pokemonId > POKEMON_LIMIT){
       pokemonId -= POKEMON_LIMIT
    }
@@ -100,7 +99,7 @@ async function getPokemon(pokemonId){
 }
 
 function createPokemon(pokemon, pokemonId){
-   const OFFICIAL_POKEDEX = 'https://api.pokemon.com/us/pokedex/'
+   const OFFICIAL_POKEDEX_URL = 'https://api.pokemon.com/us/pokedex/'
 
    pokemonIdSpan.innerHTML += pokemonId
    pokemonNameTitle.innerHTML = pokemon.name
@@ -122,7 +121,7 @@ function createPokemon(pokemon, pokemonId){
 
    const moreInfoButton = document.createElement('a')
    moreInfoButton.classList.add('button-second')
-   moreInfoButton.href = OFFICIAL_POKEDEX +pokemon.name
+   moreInfoButton.href = OFFICIAL_POKEDEX_URL + pokemon.name
    moreInfoButton.target = '_blank'
    moreInfoButton.innerHTML = 'More info...'
    buttonsContainer.appendChild(moreInfoButton)

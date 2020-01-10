@@ -103,6 +103,7 @@ h1, h2, h3{
    border: none;
    border-radius: 30px;
    background: #a1cf31;
+   cursor: pointer;
 }
 .social-links{
    margin: 60px 0;
