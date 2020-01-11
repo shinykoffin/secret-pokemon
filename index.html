@@ -17,7 +17,7 @@
       </figure>
       <div class="menu">
          <ol>
-            <li><a href="#">About</a></li>
+            <li><a href="#" class="about-link">About</a></li>
             <li><a href="#">Use</a></li>
             <li><a href="/pokemon/index.html">Start the game</a></li>
             <li><a href="https://github.com/shinykoffin" target="_blank">GitHub</a></li>
@@ -25,14 +25,24 @@
       </div>
    </nav>
 
-   <div class="modal">
+   <div class="modal about">
       <div class="modal-content">
-         <span class="modal-close">&times;</span>
+         <span class="modal-close about">&times;</span>
          <h1>About</h1>
-         <p>This is a project for the Seedling School Frontend Project by Coding Garden YouTube/Twitch channel. <br>
-            A simple app that integrates with a 3rd party web API. 
-            You can read more about this here. <br>
-            The app will calculate a Pokemon for you using an algorithm based on this image. </p>
+         <p>This is my Frontend Project for the Seedling School by Coding Garden.<br>
+            A simple website that integrates with a 3rd party web API. 
+            You can read more about this <a href="https://github.com/CodingGarden/seedling-school-01-frontend-project" target="_blank">here</a>. <br>
+            </p>
+            <p>This site will calculate a Pokemon for you using an algorithm based on <a href="https://imgur.com/gallery/mKd3DSM/new" target="_blank">this</a> image. <br >
+               It was made by me, shinykoffin, you can find me on GitHub</p>
+      </div>
+   </div>
+   <div class="modal howTo">
+      <div class="modal-content">
+         <span class="modal-close howTo">&times;</span>
+         <h1>How to use</h1>
+         <p>Click the Start button, a new page will load. There you’ll need to enter your first name, last name, day, month and year of your birthday. Then click the go button and your Pokemon will appear in your screen! You can start over by clicking the reset button, or you can learn more about your Pokemon by clicking the More info button.
+         </p>
       </div>
    </div>
 
@@ -62,5 +72,6 @@
          <p class="credits">Hecho con 💚 por shinykoffin</p>
       </footer>
    </div>
+   <script src="./index.js"></script>
 </body>
 </html>

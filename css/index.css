@@ -1,3 +1,116 @@
+.burger-icon{
+   height: 28px;
+   width: 28px;
+   z-index: 3;
+   margin: 5px;
+}
+.navigation{
+   background: #1b98e0;
+   width: 100vw;
+   height: 3rem;
+   position: fixed;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.menu{
+   background-color: rgba(27, 152, 224, 0.95);
+   position: fixed;
+   width: 85vw;
+   height: 100vh;
+   top: 0;
+   left: -100vw;
+   transition-property: left;
+   transition-duration: 0.4s;
+   transition-timing-function: ease;
+   z-index: 2;
+}
+.menu ol{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin: 65px 0 0;
+}
+.menu li{
+   width: 100%;
+}
+.menu a{
+   height: 2.5rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   color: white;
+   font-size: 1.2em;
+}
+.menuShow{
+   left: 0;
+   transition-property: left;
+   transition-duration: 0.4s;
+   transition-timing-function: ease;
+}
+/*Landing page*/
+.main-container{
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+.title-container{
+   background-color: #fcfcfc;
+   padding: calc(3rem + 50px) 0 50px;
+}
+.title{
+   font-size: 2.5rem;
+   text-transform: uppercase;
+   text-align: center;
+   line-height: 4rem;
+}
+.emphasis{
+   font-family: inherit;
+   color: #ffca39;
+}
+.main{
+   flex-grow: 1;
+   background-color: #1b98e0;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+.description{
+   width: 80vw;
+   margin: 3rem auto;
+   padding: 1.2rem;
+   background-color: rgba(0, 18,66,0.5);
+   color: white;
+}
+.start-button-container{
+   display: flex;
+   justify-content: center;
+}
+.button{
+   width: 80vw;
+   height: 3rem;
+   font-size: 1.1rem;
+   border: none;
+   border-radius: 30px;
+   background: #a1cf31;
+   cursor: pointer;
+}
+.social-links{
+   margin: 60px 0;
+   display: flex;
+   justify-content: space-between;
+}
+.github, .twitter{
+   width: 58px;
+   height: 58px;
+   background: #e0f2b6;
+   padding: 0.5rem;
+   border-radius: 50%;
+   margin: 0 10px;
+}
+/* Modal */
 .modal{
    position: fixed;
    width: 100vw;
@@ -5,8 +118,8 @@
    background: rgba(0, 0, 0, .5);
    display: flex;
    justify-content: center;
-   /* opacity: 0; */
-   /* visibility: hidden; */
+   opacity: 0;
+   visibility: hidden;
 }
 .modal-content{
    position: fixed;
@@ -33,10 +146,14 @@
    background-color: #cdcdcd;
 }
 .modal-show{
-   opacity: 1;
    visibility: visible;
+   animation: fadeIn 0.4s forwards;
 }
 @keyframes slideIn{
    from{top: -100vh; opacity: 0;}
    to{top: 30vh; opacity: 1;}
+}
+@keyframes fadeIn{
+   from {opacity: 0;}
+   to {opacity: 1;} 
 }
