@@ -23,7 +23,6 @@ h1, h2, h3{
    background: rgba(0, 0, 0, .5);
    position: fixed;
    z-index: 1;
-   /* display: none; */
 }
 .input-card{
    background: #1b98ff;
@@ -32,9 +31,6 @@ h1, h2, h3{
    height: 90vh;
    margin: 5vh 5vw;
    z-index: 2;
-   transition: 0.25s;
-   transition-timing-function: ease-out;
-   transform: translateY(0);
    opacity: 1;
 }
 .input-card h2{
@@ -178,10 +174,10 @@ h1, h2, h3{
    text-align: center;
 }
 .invisibleCard{
-   animation: fadeAwayPosition 0.4s forwards;
+   animation: fadeAwayPosition 0.4s forwards ease-in;
 }
 .visibleCard{
-   animation: fadeInPosition 0.4s forwards;
+   animation: fadeInPosition 0.4s forwards ease-out;
 }
 .fadeIn{
    animation: fadeIn 0.7s forwards;

@@ -3,6 +3,7 @@
    width: 28px;
    z-index: 3;
    margin: 5px;
+   cursor: pointer;
 }
 .navigation{
    background: #1b98e0;
@@ -120,6 +121,7 @@
    justify-content: center;
    opacity: 0;
    visibility: hidden;
+   transition: visibility 0s linear 0.25s, opacity 0.25s 0s;
 }
 .modal-content{
    position: fixed;
@@ -129,8 +131,6 @@
    width: 20rem;
    border-radius: 1.5rem;
    box-shadow: 5px 10px 30px #090909;
-   animation-name: slideIn;
-   animation-duration: 0.4s;
 }
 .modal-close{
    cursor: pointer;
@@ -147,13 +147,6 @@
 }
 .modal-show{
    visibility: visible;
-   animation: fadeIn 0.4s forwards;
-}
-@keyframes slideIn{
-   from{top: -100vh; opacity: 0;}
-   to{top: 30vh; opacity: 1;}
-}
-@keyframes fadeIn{
-   from {opacity: 0;}
-   to {opacity: 1;} 
+   opacity: 1;
+   transition: visibility 0s linear 0s, opacity 0.25s 0s;
 }

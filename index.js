@@ -1,7 +1,7 @@
 const burguerIcon = document.querySelector('#burger')
 const howToModal = document.querySelector('.howTo')
 const aboutLink = document.querySelector('.about-link')
-const useLink = document.querySelector('.use-link')
+const howToLink = document.querySelector('.howTo-link')
 
 const howToModalCloseButton = document.querySelector('.modal-close.howTo')
 
@@ -10,15 +10,32 @@ burguerIcon.addEventListener('click', function (){
    menu.classList.toggle('menuShow')
 })
 
-aboutLink.onclick = function() {
-   const aboutModal = document.querySelector('.about')
+aboutLink.onclick = () => {
+   const aboutModal = document.querySelector('.modal.about')
    const aboutModalCloseButton = document.querySelector('.modal-close.about')
-
-   aboutModal.classList.toggle('modal-show')
+   
+   toggleVisibility(aboutModal)
    
    aboutModalCloseButton.addEventListener('click', function closeModal(){
-      aboutModal.classList.toggle('modal-show')
+      toggleVisibility(aboutModal)
+      aboutModal.removeEventListener('click',closeModal)
       aboutModalCloseButton.removeEventListener('click',closeModal)
    })
 }
 
+howToLink.onclick = () =>{
+   const howToModal = document.querySelector('.modal.howTo')
+   const howToModalCloseButton = document.querySelector('.modal-close.howTo')
+
+   toggleVisibility(howToModal)
+   howToModalCloseButton.addEventListener('click', function closeModal(){
+      toggleVisibility(howToModal)
+      howToModalCloseButton.removeEventListener('click',closeModal)
+   })
+}
+
+
+
+function toggleVisibility (element){
+   element.classList.toggle('modal-show')
+}
