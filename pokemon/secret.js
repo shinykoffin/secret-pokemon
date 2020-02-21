@@ -18,7 +18,6 @@ const resetButton = document.querySelector('.button-reset')
 const buttonsContainer = document.querySelector('.buttons-container')
 const firsrtNameError = document.querySelector('#first-name-error')
 const lastNameError = document.querySelector('#last-name-error')
-const loadingAnimation = document.querySelector('.lds-spinner')
 
 initializeSelectElements()
 
@@ -51,6 +50,7 @@ function initializeSelectElements(){
 }
 
 function pokemonSetup(){
+   const loadingAnimation = document.querySelector('.lds-spinner')
    if(flagStart == false){
       inputCard.classList.remove('visibleCard')
    }
@@ -71,7 +71,11 @@ function pokemonSetup(){
       createPokemon(pokemon, pokemonId)
       loadingAnimation.style.display = 'none'
    })
-   .catch(err => {console.log(err)})
+   .catch(err => {
+      loadingAnimation.style.display = 'none'
+      callModal('','An error was ocurred: '+err)
+      flagStart = false
+   })
 }
 
 function getLetterValue(string){
@@ -166,8 +170,11 @@ function resetApp(){
       inputCard.classList.remove('invisibleCard')
       inputCard.classList.add('visibleCard')
       buttonsContainer.removeChild(buttonsContainer.childNodes[3])
-
+      
       flagStart = false
+   }else{
+      inputCard.classList.remove('invisibleCard')
+      inputCard.classList.add('visibleCard')
    }
 }
 

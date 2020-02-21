@@ -1,9 +1,6 @@
 const burguerIcon = document.querySelector('#burger')
-const howToModal = document.querySelector('.howTo')
 const aboutLink = document.querySelector('.about-link')
 const howToLink = document.querySelector('.howTo-link')
-
-const howToModalCloseButton = document.querySelector('.modal-close.howTo')
 
 burguerIcon.addEventListener('click', function (){
    const menu = document.querySelector('.menu')
@@ -11,31 +8,38 @@ burguerIcon.addEventListener('click', function (){
 })
 
 aboutLink.onclick = () => {
-   const aboutModal = document.querySelector('.modal.about')
-   const aboutModalCloseButton = document.querySelector('.modal-close.about')
-   
-   toggleVisibility(aboutModal)
-   
-   aboutModalCloseButton.addEventListener('click', function closeModal(){
-      toggleVisibility(aboutModal)
-      aboutModal.removeEventListener('click',closeModal)
-      aboutModalCloseButton.removeEventListener('click',closeModal)
-   })
+   const title = 'About'
+   const text = 'This site will calculate a Pokemon for you using an algorithm based on <a href="https://imgur.com/gallery/mKd3DSM/new" target="_blank">this</a> image. <br > It was made by shinykoffin for Coding Garden\'s Seedling School'
+   callModal(title, text)
 }
 
 howToLink.onclick = () =>{
-   const howToModal = document.querySelector('.modal.howTo')
-   const howToModalCloseButton = document.querySelector('.modal-close.howTo')
+   const title = 'How to Use'
+   const text = 'Click the Start button, a new page will load. There you’ll need to enter your first name, last name, day, month and year of your birthday. Then click the go button and your Pokemon will appear in your screen! You can start over by clicking the reset button, or you can learn more about your Pokemon by clicking the More info button.'
+   callModal(title, text)
+}
 
-   toggleVisibility(howToModal)
-   howToModalCloseButton.addEventListener('click', function closeModal(){
-      toggleVisibility(howToModal)
-      howToModalCloseButton.removeEventListener('click',closeModal)
+function callModal(title, text){
+   const modal = document.querySelector('.modal')
+   const modalContent = document.querySelector('.modal-content')
+   const modalCloseButton = document.querySelector('.modal-close')
+   const titleContainer = document.querySelector('.modal-title')
+   const textContainer = document.querySelector('.modal-text')
+
+   titleContainer.innerHTML = title
+   textContainer.innerHTML = text
+   
+   toggleVisibility(modal)
+   
+   modalCloseButton.addEventListener('click',function closeModal(){
+      toggleVisibility(modal)
+      titleContainer.innerHTML = ''
+      textContainer.innerHTML = ''
+
+      modalCloseButton.removeEventListener('click',closeModal)
    })
 }
 
-
-
 function toggleVisibility (element){
-   element.classList.toggle('modal-show')
+   element.classList.toggle('show')
 }

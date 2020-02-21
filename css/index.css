@@ -145,7 +145,7 @@
 .modal-close:hover{
    background-color: #cdcdcd;
 }
-.modal-show{
+.show{
    visibility: visible;
    opacity: 1;
    transition: visibility 0s linear 0s, opacity 0.25s 0s;
