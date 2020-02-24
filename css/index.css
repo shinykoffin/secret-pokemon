@@ -199,4 +199,13 @@
       font-size: 1.1rem;
    }
 
+   .description{
+      width: 30vw;
+   }
+   .button{
+      width: 15vw;
+   }
+   .social-links{
+      width: 10vw;
+   }
 }
