@@ -153,3 +153,50 @@
    opacity: 1;
    transition: visibility 0s linear 0s, opacity 0.25s 0s;
 }
+
+@media screen and (min-width: 480px){
+
+}
+
+@media screen and (min-width: 768px){
+   .logo-container{
+      margin-right: 0.7rem;
+   }
+   .menu a{
+      height: 3rem;
+      font-size: 1.4rem;
+   }
+   .button{
+      width: 70vw;
+      height: 4rem;
+   }
+   .social-links{
+      width: 90vw;
+      margin: 60px auto;
+   }
+}
+
+@media screen and (min-width: 1024px){
+   .burger-icon{
+      display: none;
+   }
+   .logo-container{
+      margin-left: 0.7rem;
+   }
+   .menu{
+      position: initial;
+      width: 40vw;
+      height: 100%;
+      background-color: initial;
+   }
+   .menu ol{
+      display: flex;
+      margin: 0 0.7rem 0 0;
+      list-style-type: none;
+      flex-direction: row;
+   }
+   .menu a{
+      font-size: 1.1rem;
+   }
+
+}
