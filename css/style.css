@@ -25,11 +25,12 @@ h1, h2, h3{
    z-index: 1;
 }
 .input-card{
-   background: #1b98ff;
+   background: #bfe2ff;
    position: fixed;
    width: 90vw;
    height: 90vh;
    margin: 5vh 5vw;
+   padding: 0.5rem;
    z-index: 2;
    opacity: 1;
 }
@@ -167,12 +168,6 @@ h1, h2, h3{
 .steel{background: #b8b8d0; border: 2px solid #787887}
 .fairy{background: #ee99ac; border: 2px solid #9b6470}
 
-.footer{
-   background: #001242;
-   color: #fcfcfc;
-   font-size: .8rem;
-   text-align: center;
-}
 .invisibleCard{
    animation: fadeAwayPosition 0.4s forwards ease-in;
 }
@@ -226,6 +221,30 @@ h1, h2, h3{
     100%{
       opacity: 1;
     }
+}
+
+@media screen and (min-width: 480px){
+
+}
+@media screen and (min-width: 768px){
+
+}
+
+@media screen and (min-width: 1024px){
+   .input-menu{
+
+   }
+   .input-text{
+      align-self: stretch;
+   }
+   .input-card-container{
+      display: flex;
+      justify-content: center;
+   }
+   .input-card{
+      width: 25vw;
+      margin: 2rem 0;
+   }
 }
 
 /*Loading animation from loading.io*/
