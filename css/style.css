@@ -231,9 +231,6 @@ h1, h2, h3{
 }
 
 @media screen and (min-width: 1024px){
-   .input-menu{
-
-   }
    .input-text{
       align-self: stretch;
    }
@@ -244,6 +241,29 @@ h1, h2, h3{
    .input-card{
       width: 25vw;
       margin: 2rem 0;
+   }
+   .pokemon{
+      width: 700px;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      padding-top: 100px;
+   }
+   .pokemon>*{
+      flex: 0 1 40%;
+   }
+   .pokemon-sprite{
+      margin-top: 2.5rem;
+      position: initial;
+   }
+   .pokemon-info{
+      align-items: center;
+   }
+   .button-second{
+      width: 9rem;
+      margin: 0 10px;
    }
 }
 
