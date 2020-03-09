@@ -121,7 +121,7 @@ function createPokemon(pokemon, pokemonId){
       typeDiv.classList.add('fadeIn')
       typeDiv.innerHTML = t.type.name
       typeContainer.appendChild(typeDiv)
-   });
+   })
 
    const moreInfoButton = document.createElement('a')
    moreInfoButton.classList.add('button-second')
