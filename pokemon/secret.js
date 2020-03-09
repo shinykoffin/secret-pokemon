@@ -132,7 +132,7 @@ function createPokemon(pokemon, pokemonId){
 }
 
 function checkInput(){
-   const letters = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/
+   const letters = /^[a-zA-ZÀ-ÿ].*/
    let flag = true
    //First input
    if(firstNameInput.value == ''){
@@ -161,6 +161,8 @@ function resetApp(){
    if(flagStart){
       pokemonIdSpan.innerHTML = '#'
       pokemonNameTitle.innerHTML = ''
+      firstNameInput.value = ''
+      lastNameInput.value = ''
       
       pokemonImageContainer.removeChild(document.querySelector('.pokemon-sprite'))
       

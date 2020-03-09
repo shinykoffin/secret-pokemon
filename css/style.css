@@ -22,7 +22,7 @@ h1, h2, h3{
    height: 100vh;
    background: rgba(0, 0, 0, .5);
    position: fixed;
-   z-index: 1;
+   z-index: 3;
 }
 .input-card{
    background: #bfe2ff;
@@ -76,7 +76,7 @@ h1, h2, h3{
    height: 100vh;
    flex-direction: column;
    position: relative;
-   z-index: -1;
+   z-index: 0;
 }
 .pokemon{
    padding-top: 3rem;

@@ -18,6 +18,7 @@ body{
    display: flex;
    align-items: center;
    justify-content: space-between;
+   z-index: 3;
 }
 .menu{
    background-color: rgba(27, 152, 224, 0.95);
