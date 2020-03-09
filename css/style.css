@@ -75,6 +75,8 @@ h1, h2, h3{
    display: flex;
    height: 100vh;
    flex-direction: column;
+   position: relative;
+   z-index: -1;
 }
 .pokemon{
    padding-top: 3rem;
